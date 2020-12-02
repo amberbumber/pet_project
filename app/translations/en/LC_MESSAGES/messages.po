@@ -1,0 +1,311 @@
+# English translations for PROJECT.
+# Copyright (C) 2020 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2020-11-29 22:44+0700\n"
+"PO-Revision-Date: 2020-11-05 23:59+0700\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: app/__init__.py:30
+msgid "Необходимо авторизоваться"
+msgstr "You need to login"
+
+#: app/translate.py:24
+msgid "Ошибка: сервис перевода не сконфигурирован."
+msgstr "Error: the translation service is not configured."
+
+#: app/translate.py:39
+msgid "Ошибка: Ошибка доступа к серверу перевода."
+msgstr "Error: the translation service failed."
+
+#: app/auth/email.py:22
+msgid "[Microblog] Сброс пароля"
+msgstr "[Microblog] Reset password"
+
+#: app/auth/forms.py:10 app/auth/forms.py:18 app/main/forms.py:11
+msgid "Логин"
+msgstr "Username"
+
+#: app/auth/forms.py:11 app/auth/forms.py:20 app/auth/forms.py:48
+msgid "Пароль"
+msgstr "Password"
+
+#: app/auth/forms.py:12
+msgid "Запомнить меня"
+msgstr "Remember me"
+
+#: app/auth/forms.py:13
+msgid "Войти"
+msgstr "Login"
+
+#: app/auth/forms.py:19 app/auth/forms.py:37
+msgid "Email"
+msgstr "Email"
+
+#: app/auth/forms.py:21 app/auth/forms.py:49
+msgid "Повторите пароль"
+msgstr "Repeat password"
+
+#: app/auth/forms.py:22
+msgid "Зарегистрироваться"
+msgstr "Sign in"
+
+#: app/auth/forms.py:27
+msgid "Пользователь с таким логином уже существует"
+msgstr "There is already a user with this username"
+
+#: app/auth/forms.py:32
+msgid "Пользователь с таким email уже существует"
+msgstr "There is already a user with this email"
+
+#: app/auth/forms.py:38
+msgid "Запросить сброс пароля"
+msgstr "Ask password reset"
+
+#: app/auth/forms.py:43
+msgid "Пользователя с таким email не существует"
+msgstr "There is already a user with this email"
+
+#: app/auth/forms.py:50
+msgid "Сохранить новый пароль"
+msgstr "Submit new password"
+
+#: app/auth/routes.py:15
+msgid "Вы уже вошли в систему"
+msgstr "You are already logged in"
+
+#: app/auth/routes.py:23
+msgid "Неверный логин или пароль"
+msgstr "Wrong username or password"
+
+#: app/auth/routes.py:30 app/templates/auth/login.html:5
+msgid "Вход"
+msgstr "Login"
+
+#: app/auth/routes.py:49
+msgid "Регистрация завершена успешно"
+msgstr "Sing in went successful"
+
+#: app/auth/routes.py:51 app/templates/auth/register.html:5
+msgid "Регистрация"
+msgstr "Sign in"
+
+#: app/auth/routes.py:63
+msgid "Проверьте свою почту и следуйте инструкциям"
+msgstr "Check your mail and follow instructions"
+
+#: app/auth/routes.py:65 app/templates/auth/reset_password_request.html:5
+msgid "Сброс пароля"
+msgstr "Reset password"
+
+#: app/auth/routes.py:79
+msgid "Пароль успешно изменен"
+msgstr "Password changed"
+
+#: app/main/forms.py:12
+msgid "Обо мне"
+msgstr "About me"
+
+#: app/main/forms.py:13
+msgid "Сохранить"
+msgstr "Save"
+
+#: app/main/forms.py:23
+msgid "Пользователь с таким именем уже существует"
+msgstr "There is already a user with this username"
+
+#: app/main/forms.py:28
+msgid "Скажите что-ниубдь"
+msgstr "Say something"
+
+#: app/main/forms.py:29
+msgid "Опубликовать"
+msgstr "Post"
+
+#: app/main/forms.py:39 app/main/routes.py:175
+msgid "Поиск"
+msgstr "Search"
+
+#: app/main/routes.py:39
+msgid "Ваш пост успешно опубликован!"
+msgstr "Your post is noe live!"
+
+#: app/main/routes.py:45
+msgid "Домашняя страница"
+msgstr "Home"
+
+#: app/main/routes.py:68 app/templates/base.html:27
+msgid "Explore"
+msgstr "Explore"
+
+#: app/main/routes.py:102
+msgid "Изменения успешно сохранены"
+msgstr "Changes saved"
+
+#: app/main/routes.py:107 app/templates/edit_profile.html:5
+#: app/templates/user.html:18
+msgid "Редактировать профиль"
+msgstr "Edit profile"
+
+#: app/main/routes.py:117 app/main/routes.py:137
+#, python-format
+msgid "Пользователь %(username)s не найден"
+msgstr "User %(username)s not found"
+
+#: app/main/routes.py:120
+msgid "Вы не можете подписаться на самого себя"
+msgstr "You can't follow yourself"
+
+#: app/main/routes.py:124
+#, python-format
+msgid "Вы подписались на пользователя %(username)s!"
+msgstr "You now follow user  %(username)s!"
+
+#: app/main/routes.py:140
+msgid "Вы не можете отписаться от самого себя"
+msgstr "You can't unfollow yourself"
+
+#: app/main/routes.py:144
+#, python-format
+msgid "Вы успешно отписались от пользователя %(username)s"
+msgstr "You successfully unfollowed user %(username)s"
+
+#: app/templates/_post.html:14
+#, python-format
+msgid "%(username)s сказал %(when)s"
+msgstr "%(username)s says %(when)s"
+
+#: app/templates/_post.html:24
+msgid "Перевести"
+msgstr "Translate"
+
+#: app/templates/base.html:5
+msgid "Добро пожаловать в"
+msgstr "Welcome in"
+
+#: app/templates/base.html:26
+msgid "Home"
+msgstr "Home"
+
+#: app/templates/base.html:40
+msgid "Login"
+msgstr "Login"
+
+#: app/templates/base.html:42
+msgid "Profile"
+msgstr "Profile"
+
+#: app/templates/base.html:43
+msgid "Logout"
+msgstr "Logout"
+
+#: app/templates/base.html:83
+msgid "Ошибка: Невозможно подключитсья к серверу."
+msgstr "Error: Could not contact server."
+
+#: app/templates/index.html:5
+msgid "Привет"
+msgstr "Hello"
+
+#: app/templates/index.html:38 app/templates/user.html:47
+msgid "Посты новее"
+msgstr "Newer posts"
+
+#: app/templates/index.html:42 app/templates/user.html:52
+msgid "Посты старее"
+msgstr "Older posts"
+
+#: app/templates/search.html:5
+msgid "Результаты поиска"
+msgstr "Search results"
+
+#: app/templates/search.html:14
+msgid "Прерыдущие результаты"
+msgstr "Previous results"
+
+#: app/templates/search.html:20
+msgid "Следующие результаты"
+msgstr "Next results"
+
+#: app/templates/user.html:9
+msgid "Пользователь:"
+msgstr "User:"
+
+#: app/templates/user.html:11
+#, python-format
+msgid "Заходил последний раз: %(when)s"
+msgstr "Last seen on: %(when)s"
+
+#: app/templates/user.html:14
+#, python-format
+msgid "Пописчики(кто читает): %(count)d"
+msgstr "Followers: %(count)d"
+
+#: app/templates/user.html:15
+#, python-format
+msgid "подписаны(кого читает): %(count)d"
+msgstr "Followed: %(count)d"
+
+#: app/templates/user.html:24
+msgid "Подписаться"
+msgstr "Follow"
+
+#: app/templates/user.html:32
+msgid "Отписаться"
+msgstr "Unfollow"
+
+#: app/templates/auth/login.html:14
+msgid "Новый пользователь?"
+msgstr "New user"
+
+#: app/templates/auth/login.html:14
+msgid "Перейти для регистрации"
+msgstr "Go to Sign in ->"
+
+#: app/templates/auth/login.html:17
+msgid "Забыли пароль?"
+msgstr "Forget your password?"
+
+#: app/templates/auth/login.html:17
+msgid "Сбросить пароль"
+msgstr "Reset yor password"
+
+#: app/templates/auth/reset_password.html:5
+msgid "Изменить пароль"
+msgstr "Change you password"
+
+#: app/templates/errors/404.html:5
+msgid "Ошибка 404"
+msgstr "Error 404"
+
+#: app/templates/errors/404.html:6
+msgid "файл не найден"
+msgstr "file not found"
+
+#: app/templates/errors/404.html:9 app/templates/errors/500.html:9
+msgid "Вернуться назад"
+msgstr "Back"
+
+#: app/templates/errors/500.html:5
+msgid "Ошибка 500"
+msgstr "Error 500"
+
+#: app/templates/errors/500.html:6
+msgid "внутренняя ошибка"
+msgstr "server error"
+
+#~ msgid "%(username)s сказал %(when)s"
+#~ msgstr "%(username)s says %(when)s"
+

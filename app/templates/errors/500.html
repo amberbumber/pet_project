@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <p>
+        <h3>{{ _('Ошибка 500') }}</h3>
+        <span> <b>{{ _('внутренняя ошибка') }}</b> </span>
+
+    </p>
+    <p> <a href="{{ url_for('main.index') }}">{{ _('Вернуться назад') }}</a> </p>
+{% endblock %}
