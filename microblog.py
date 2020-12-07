@@ -9,4 +9,4 @@ def make_shell_context():
     return {'db': db, 'User': User, 'Post': Post}
 
 
-app.run(host="192.168.31.74")
+app.run()
