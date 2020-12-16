@@ -80,17 +80,22 @@ def create_app(config_class=Config):
     #     mail_handler = SMTPHandler('127.0.0.1',
     #                                'server-error@example.com',
     #                                ADMINS, 'YourApplication Failed')
-        if not os.path.exists('logs'):
-            os.mkdir('logs')
-            # if not os.path.exists('logs'+str(date.today())):
-            #     os.mkdir('log'+str(date.today()))
-            # file_handler = logging.FileHandler('log'+str(date.today())+os.path.sep+'microblog'+str(date.today())+'.log', mode='a',
-            #                            encoding='UTF-8')
-        file_handler = logging.FileHandler('logs'+ os.path.sep + 'microblog' + str(date.today()) + '.log', mode='a',encoding='UTF-8')
-        file_handler.setFormatter(logging.Formatter(
-            '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
-        file_handler.setLevel(logging.INFO)
-        app.logger.addHandler(file_handler)
+        if app.config['LOG_TO_STDOUT']:
+            stream_handler = logging.StreamHandler()
+            stream_handler.setLevel(logging.INFO)
+            app.logger.addHandler(stream_handler)
+        else:
+            if not os.path.exists('logs'):
+                os.mkdir('logs')
+                # if not os.path.exists('logs'+str(date.today())):
+                #     os.mkdir('log'+str(date.today()))
+                # file_handler = logging.FileHandler('log'+str(date.today())+os.path.sep+'microblog'+str(date.today())+'.log', mode='a',
+                #                            encoding='UTF-8')
+            file_handler = logging.FileHandler('logs'+ os.path.sep + 'microblog' + str(date.today()) + '.log', mode='a',encoding='UTF-8')
+            file_handler.setFormatter(logging.Formatter(
+                '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
+            file_handler.setLevel(logging.INFO)
+            app.logger.addHandler(file_handler)
 
         app.logger.setLevel(logging.INFO)
         app.logger.info("Microblog startup")
