@@ -1,0 +1,19 @@
+#переменные приложения
+SECRET_KEY=my-secret-key
+
+#переменные почтового сервера
+MAIL_SERVER=smtp.googlemail.com
+MAIL_PORT=587
+MAIL_USE_TLS=true
+MAIL_USERNAME=<login>@gmail.com
+MAIL_PASSWORD=<password> 
+
+#токен переводчика яндекс
+IAM_TOKEN=1
+
+#elasticsearch
+ELASTICSEARCH_URL=http://elasticsearch:9200
+
+#переменные для БД
+DATABASE_URL=mysql+pymysql://microblog:<dbpassword>@dbserver/microblog
+
