@@ -1,10 +1,9 @@
-from flask import current_app
+from flask import current_app, flash
 import json
 import requests
 from flask_babel import _
 import os
 import time
-# from app.get_token import get_token
 
 
 def get_token(app):
@@ -15,32 +14,30 @@ def get_token(app):
         time.sleep(2)
         os.environ['IAM_TOKEN'] = app.config['IAM_TOKEN']
 
-    # print(current_app.config['IAM_TOKEN'])
-    # os.system('set IAM_TOKEN = {}'.format(json.loads(r.content.decode('utf-8-sig'))['iamToken']))
-
 
 def translate(text, source_lang, dest_lang):
     if 'IAM_TOKEN' not in current_app.config or not current_app.config['IAM_TOKEN']:
         return _('Ошибка: сервис перевода не сконфигурирован.')
     auth_head = {'Authorization': 'Bearer ' + current_app.config['IAM_TOKEN']}
-    # print(current_app.config['IAM_TOKEN'])
-    r = requests.post('https://translate.api.cloud.yandex.net/translate/v2/translate',
+    try:
+        r = requests.post('https://translate.api.cloud.yandex.net/translate/v2/translate',
                       json={"folder_id": "b1g7ssfgaa2lgvdvn9e3",
                             "texts": [text],
                             "targetLanguageCode": dest_lang,
                             "sourceLanguageCode": source_lang},
                       headers=auth_head)
-    if r.status_code != 200:
-        try:
+        if r.status_code == 401:
             get_token(current_app._get_current_object())
             return translate(text, source_lang, dest_lang)
-            # return json.loads(r.content.decode('utf-8-sig'))['languageCode']
-        except:
-            return _('Ошибка: Ошибка доступа к серверу перевода.')
-        # translate(text, source_lang, dest_lang)
-    # return json.loads(r.content.decode('utf-8-sig'))['translations'][0]['text']
-    current_app.logger.info("translate '{}', from '{}', to '{}'".format(text, source_lang, dest_lang))
-    return json.loads(r.content.decode('utf-8-sig'))['translations'][0]
+        return json.loads(r.content.decode('utf-8-sig'))['translations'][0]
+    except KeyError:
+        current_app.logger.error("Невозможно сформировать перевод. Сервер недоступен "
+                                 "или возникла ошибка аутентификации токена")
+        current_app.logger.error('Yandex Cloud Error: ' + str(r.status_code) + ': '
+                                 + str(json.loads(r.content.decode('utf-8-sig'))['message']))
+        # формирование и возвращение json-like объекта словаря для отображения
+        # ошибки при недоступности сервера ( в скрипте в base.html)
+        return {"text": "Ошибка: Сервер недоступен", "detectedLanguageCode": "none"}
 
 
 def detect_lang(text):
@@ -53,14 +50,19 @@ def detect_lang(text):
                             "text": text,
                             "languageCodeHints": lang_hints},
                             headers=auth_head)
-    if r.status_code != 200:
+    if r.status_code == 401:   # невалидный токен, пробуем его обновить
         try:
             get_token(current_app._get_current_object())
             return detect_lang(text)
             # return json.loads(r.content.decode('utf-8-sig'))['languageCode']
         except:
             language = ''
+            flash(_('Сервер для перевода не доступен (язык не определен)'))
             return language
+    elif r.status_code == 403:   # inactive yandexcloud (закончился период доступа к переводчику яндекса)
+        language = ''
+        flash(_('Сервер для перевода не доступен (язык не определен)'))
+        return language
     else:
         print('return  ' + json.loads(r.content.decode('utf-8-sig'))['languageCode'])
         print(type(json.loads(r.content.decode('utf-8-sig'))['languageCode']))
