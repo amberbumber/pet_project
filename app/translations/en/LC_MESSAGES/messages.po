@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-11-29 22:44+0700\n"
+"POT-Creation-Date: 2021-01-06 15:09+0700\n"
 "PO-Revision-Date: 2020-11-05 23:59+0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -134,9 +134,17 @@ msgstr "Say something"
 msgid "Опубликовать"
 msgstr "Post"
 
-#: app/main/forms.py:39 app/main/routes.py:175
+#: app/main/forms.py:39 app/main/routes.py:211
 msgid "Поиск"
 msgstr "Search"
+
+#: app/main/forms.py:51
+msgid "Сообщение"
+msgstr "Message"
+
+#: app/main/forms.py:52
+msgid "Отправить"
+msgstr "Send"
 
 #: app/main/routes.py:39
 msgid "Ваш пост успешно опубликован!"
@@ -146,86 +154,85 @@ msgstr "Your post is noe live!"
 msgid "Домашняя страница"
 msgstr "Home"
 
-#: app/main/routes.py:68 app/templates/base.html:27
+#: app/main/routes.py:68
 msgid "Explore"
 msgstr "Explore"
 
-#: app/main/routes.py:102
+#: app/main/routes.py:110
 msgid "Изменения успешно сохранены"
 msgstr "Changes saved"
 
-#: app/main/routes.py:107 app/templates/edit_profile.html:5
-#: app/templates/user.html:18
+#: app/main/routes.py:115 app/templates/edit_profile.html:5
 msgid "Редактировать профиль"
 msgstr "Edit profile"
 
-#: app/main/routes.py:117 app/main/routes.py:137
+#: app/main/routes.py:125 app/main/routes.py:145
 #, python-format
 msgid "Пользователь %(username)s не найден"
 msgstr "User %(username)s not found"
 
-#: app/main/routes.py:120
+#: app/main/routes.py:128
 msgid "Вы не можете подписаться на самого себя"
 msgstr "You can't follow yourself"
 
-#: app/main/routes.py:124
+#: app/main/routes.py:132
 #, python-format
 msgid "Вы подписались на пользователя %(username)s!"
 msgstr "You now follow user  %(username)s!"
 
-#: app/main/routes.py:140
+#: app/main/routes.py:148
 msgid "Вы не можете отписаться от самого себя"
 msgstr "You can't unfollow yourself"
 
-#: app/main/routes.py:144
+#: app/main/routes.py:152
 #, python-format
 msgid "Вы успешно отписались от пользователя %(username)s"
 msgstr "You successfully unfollowed user %(username)s"
 
-#: app/templates/_post.html:14
+#: app/main/routes.py:181
+msgid "Ваше сообщение было отправлено пользователю {}"
+msgstr "Your message has been sent to user {}"
+
+#: app/main/routes.py:183
+msgid "Отправить сообщение"
+msgstr "Send Message"
+
+#: app/main/routes.py:195
+msgid "Сообщения"
+msgstr "Messages"
+
+#: app/templates/_post.html:16
 #, python-format
 msgid "%(username)s сказал %(when)s"
 msgstr "%(username)s says %(when)s"
 
-#: app/templates/_post.html:24
+#: app/templates/_post.html:26
 msgid "Перевести"
 msgstr "Translate"
-
-#: app/templates/base.html:5
-msgid "Добро пожаловать в"
-msgstr "Welcome in"
-
-#: app/templates/base.html:26
-msgid "Home"
-msgstr "Home"
-
-#: app/templates/base.html:40
-msgid "Login"
-msgstr "Login"
-
-#: app/templates/base.html:42
-msgid "Profile"
-msgstr "Profile"
-
-#: app/templates/base.html:43
-msgid "Logout"
-msgstr "Logout"
-
-#: app/templates/base.html:83
-msgid "Ошибка: Невозможно подключитсья к серверу."
-msgstr "Error: Could not contact server."
 
 #: app/templates/index.html:5
 msgid "Привет"
 msgstr "Hello"
 
-#: app/templates/index.html:38 app/templates/user.html:47
+#: app/templates/index.html:38
 msgid "Посты новее"
 msgstr "Newer posts"
 
-#: app/templates/index.html:42 app/templates/user.html:52
+#: app/templates/index.html:42
 msgid "Посты старее"
 msgstr "Older posts"
+
+#: app/templates/messages.html:5
+msgid "Личные сообщения"
+msgstr "Private messages"
+
+#: app/templates/messages.html:18
+msgid "Сообщения новее"
+msgstr "Newer messages"
+
+#: app/templates/messages.html:22
+msgid "Сообщения старее"
+msgstr "Older messages"
 
 #: app/templates/search.html:5
 msgid "Результаты поиска"
@@ -239,30 +246,30 @@ msgstr "Previous results"
 msgid "Следующие результаты"
 msgstr "Next results"
 
-#: app/templates/user.html:9
-msgid "Пользователь:"
-msgstr "User:"
-
-#: app/templates/user.html:11
+#: app/templates/send_message.html:5
 #, python-format
-msgid "Заходил последний раз: %(when)s"
-msgstr "Last seen on: %(when)s"
+msgid "Отпраивть сообщение пользователю %(recipient)s"
+msgstr "Send message to user %(recipient)s"
 
-#: app/templates/user.html:14
+#: app/templates/user_popup.html:13
+msgid "Заходил(а) последний раз"
+msgstr "Last seen on"
+
+#: app/templates/user_popup.html:16
 #, python-format
-msgid "Пописчики(кто читает): %(count)d"
+msgid "Подписчиков: %(count)d"
 msgstr "Followers: %(count)d"
 
-#: app/templates/user.html:15
+#: app/templates/user_popup.html:17
 #, python-format
-msgid "подписаны(кого читает): %(count)d"
+msgid "Полписан на: %(count)d"
 msgstr "Followed: %(count)d"
 
-#: app/templates/user.html:24
+#: app/templates/user_popup.html:24
 msgid "Подписаться"
 msgstr "Follow"
 
-#: app/templates/user.html:32
+#: app/templates/user_popup.html:32
 msgid "Отписаться"
 msgstr "Unfollow"
 
@@ -308,4 +315,34 @@ msgstr "server error"
 
 #~ msgid "%(username)s сказал %(when)s"
 #~ msgstr "%(username)s says %(when)s"
+
+#~ msgid "Добро пожаловать в"
+#~ msgstr "Welcome in"
+
+#~ msgid "Home"
+#~ msgstr "Home"
+
+#~ msgid "Login"
+#~ msgstr "Login"
+
+#~ msgid "Profile"
+#~ msgstr "Profile"
+
+#~ msgid "Logout"
+#~ msgstr "Logout"
+
+#~ msgid "Ошибка: Невозможно подключитсья к серверу."
+#~ msgstr "Error: Could not contact server."
+
+#~ msgid "Пользователь:"
+#~ msgstr "User:"
+
+#~ msgid "Заходил последний раз: %(when)s"
+#~ msgstr "Last seen on: %(when)s"
+
+#~ msgid "Пописчики(кто читает): %(count)d"
+#~ msgstr "Followers: %(count)d"
+
+#~ msgid "подписаны(кого читает): %(count)d"
+#~ msgstr "Followed: %(count)d"
 
