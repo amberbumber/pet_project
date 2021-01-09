@@ -19,25 +19,22 @@ def translate(text, source_lang, dest_lang):
     if 'IAM_TOKEN' not in current_app.config or not current_app.config['IAM_TOKEN']:
         return _('Ошибка: сервис перевода не сконфигурирован.')
     auth_head = {'Authorization': 'Bearer ' + current_app.config['IAM_TOKEN']}
-    try:
-        r = requests.post('https://translate.api.cloud.yandex.net/translate/v2/translate',
-                      json={"folder_id": "b1g7ssfgaa2lgvdvn9e3",
-                            "texts": [text],
-                            "targetLanguageCode": dest_lang,
-                            "sourceLanguageCode": source_lang},
-                      headers=auth_head)
-        if r.status_code == 401:
-            get_token(current_app._get_current_object())
-            return translate(text, source_lang, dest_lang)
-        return json.loads(r.content.decode('utf-8-sig'))['translations'][0]
-    except KeyError:
+
+    r = requests.post('https://translate.api.cloud.yandex.net/translate/v2/translate',
+                  json={"folder_id": "b1g7ssfgaa2lgvdvn9e3",
+                        "texts": [text],
+                        "targetLanguageCode": dest_lang,
+                        "sourceLanguageCode": source_lang},
+                  headers=auth_head)
+    if r.status_code == 401:
+        get_token(current_app._get_current_object())
+        return translate(text, source_lang, dest_lang)
+    if r.status_code == 403:
         current_app.logger.error("Невозможно сформировать перевод. Сервер недоступен "
                                  "или возникла ошибка аутентификации токена")
         current_app.logger.error('Yandex Cloud Error: ' + str(r.status_code) + ': '
                                  + str(json.loads(r.content.decode('utf-8-sig'))['message']))
-        # формирование и возвращение json-like объекта словаря для отображения
-        # ошибки при недоступности сервера ( в скрипте в base.html)
-        return {"text": "Ошибка: Сервер недоступен", "detectedLanguageCode": "none"}
+    return json.loads(r.content.decode('utf-8-sig'))['translations'][0]
 
 
 def detect_lang(text):
