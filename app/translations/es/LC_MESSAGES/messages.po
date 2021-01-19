@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-11-29 22:44+0700\n"
+"POT-Creation-Date: 2021-01-06 15:09+0700\n"
 "PO-Revision-Date: 2020-11-07 22:53+0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -134,8 +134,16 @@ msgstr ""
 msgid "Опубликовать"
 msgstr ""
 
-#: app/main/forms.py:39 app/main/routes.py:175
+#: app/main/forms.py:39 app/main/routes.py:211
 msgid "Поиск"
+msgstr ""
+
+#: app/main/forms.py:51
+msgid "Сообщение"
+msgstr ""
+
+#: app/main/forms.py:52
+msgid "Отправить"
 msgstr ""
 
 #: app/main/routes.py:39
@@ -146,85 +154,84 @@ msgstr ""
 msgid "Домашняя страница"
 msgstr ""
 
-#: app/main/routes.py:68 app/templates/base.html:27
+#: app/main/routes.py:68
 msgid "Explore"
 msgstr ""
 
-#: app/main/routes.py:102
+#: app/main/routes.py:110
 msgid "Изменения успешно сохранены"
 msgstr ""
 
-#: app/main/routes.py:107 app/templates/edit_profile.html:5
-#: app/templates/user.html:18
+#: app/main/routes.py:115 app/templates/edit_profile.html:5
 msgid "Редактировать профиль"
 msgstr ""
 
-#: app/main/routes.py:117 app/main/routes.py:137
+#: app/main/routes.py:125 app/main/routes.py:145
 #, python-format
 msgid "Пользователь %(username)s не найден"
 msgstr ""
 
-#: app/main/routes.py:120
+#: app/main/routes.py:128
 msgid "Вы не можете подписаться на самого себя"
 msgstr ""
 
-#: app/main/routes.py:124
+#: app/main/routes.py:132
 #, python-format
 msgid "Вы подписались на пользователя %(username)s!"
 msgstr ""
 
-#: app/main/routes.py:140
+#: app/main/routes.py:148
 msgid "Вы не можете отписаться от самого себя"
 msgstr ""
 
-#: app/main/routes.py:144
+#: app/main/routes.py:152
 #, python-format
 msgid "Вы успешно отписались от пользователя %(username)s"
 msgstr ""
 
-#: app/templates/_post.html:14
+#: app/main/routes.py:181
+msgid "Ваше сообщение было отправлено пользователю {}"
+msgstr ""
+
+#: app/main/routes.py:183
+msgid "Отправить сообщение"
+msgstr ""
+
+#: app/main/routes.py:195
+msgid "Сообщения"
+msgstr ""
+
+#: app/templates/_post.html:16
 #, python-format
 msgid "%(username)s сказал %(when)s"
 msgstr ""
 
-#: app/templates/_post.html:24
+#: app/templates/_post.html:26
 msgid "Перевести"
-msgstr ""
-
-#: app/templates/base.html:5
-msgid "Добро пожаловать в"
-msgstr ""
-
-#: app/templates/base.html:26
-msgid "Home"
-msgstr ""
-
-#: app/templates/base.html:40
-msgid "Login"
-msgstr ""
-
-#: app/templates/base.html:42
-msgid "Profile"
-msgstr ""
-
-#: app/templates/base.html:43
-msgid "Logout"
-msgstr ""
-
-#: app/templates/base.html:83
-msgid "Ошибка: Невозможно подключитсья к серверу."
 msgstr ""
 
 #: app/templates/index.html:5
 msgid "Привет"
 msgstr ""
 
-#: app/templates/index.html:38 app/templates/user.html:47
+#: app/templates/index.html:38
 msgid "Посты новее"
 msgstr ""
 
-#: app/templates/index.html:42 app/templates/user.html:52
+#: app/templates/index.html:42
 msgid "Посты старее"
+msgstr ""
+
+#: app/templates/messages.html:5
+msgid "Личные сообщения"
+msgstr ""
+
+#: app/templates/messages.html:18
+msgid "Сообщения новее"
+msgstr ""
+
+#: app/templates/messages.html:22
+msgid "Сообщения старее"
 msgstr ""
 
 #: app/templates/search.html:5
@@ -239,30 +246,30 @@ msgstr ""
 msgid "Следующие результаты"
 msgstr ""
 
-#: app/templates/user.html:9
-msgid "Пользователь:"
-msgstr ""
-
-#: app/templates/user.html:11
+#: app/templates/send_message.html:5
 #, python-format
-msgid "Заходил последний раз: %(when)s"
+msgid "Отпраивть сообщение пользователю %(recipient)s"
 msgstr ""
 
-#: app/templates/user.html:14
+#: app/templates/user_popup.html:13
+msgid "Заходил(а) последний раз"
+msgstr ""
+
+#: app/templates/user_popup.html:16
 #, python-format
-msgid "Пописчики(кто читает): %(count)d"
+msgid "Подписчиков: %(count)d"
 msgstr ""
 
-#: app/templates/user.html:15
+#: app/templates/user_popup.html:17
 #, python-format
-msgid "подписаны(кого читает): %(count)d"
+msgid "Полписан на: %(count)d"
 msgstr ""
 
-#: app/templates/user.html:24
+#: app/templates/user_popup.html:24
 msgid "Подписаться"
 msgstr ""
 
-#: app/templates/user.html:32
+#: app/templates/user_popup.html:32
 msgid "Отписаться"
 msgstr ""
 
@@ -307,5 +314,35 @@ msgid "внутренняя ошибка"
 msgstr ""
 
 #~ msgid "%(username)s сказал %(when)s"
+#~ msgstr ""
+
+#~ msgid "Добро пожаловать в"
+#~ msgstr ""
+
+#~ msgid "Home"
+#~ msgstr ""
+
+#~ msgid "Login"
+#~ msgstr ""
+
+#~ msgid "Profile"
+#~ msgstr ""
+
+#~ msgid "Logout"
+#~ msgstr ""
+
+#~ msgid "Ошибка: Невозможно подключитсья к серверу."
+#~ msgstr ""
+
+#~ msgid "Пользователь:"
+#~ msgstr ""
+
+#~ msgid "Заходил последний раз: %(when)s"
+#~ msgstr ""
+
+#~ msgid "Пописчики(кто читает): %(count)d"
+#~ msgstr ""
+
+#~ msgid "подписаны(кого читает): %(count)d"
 #~ msgstr ""
 
