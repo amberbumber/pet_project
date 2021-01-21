@@ -200,13 +200,9 @@ def messages():
     current_user.add_notification('unread_message_count', 0)
     db.session.commit()
     page = request.args.get('page', 1, type=int)
-<<<<<<< HEAD
     # messages = Message.query.filter_by(recipient_id=current_user.id).order_by(Message.timestamp.desc()).paginate(page, current_app.config['POSTS_PER_PAGE'], False)
     messages = current_user.messages_received.order_by(Message.timestamp.desc()).paginate(
-                                                                    page, current_app.config['POSTS_PER_PAGE'], False)
-=======
-    
->>>>>>> 70f5c381dd87dc9f9126fbdee26598b1a79093b5
+                                                                    page, current_app.config['POSTS_PER_PAGE'], False)  
     next_url = url_for('main.messages', page=messages.next_num) if messages.has_next else None
     prev_url = url_for('main.messages', page=messages.prev_num) if messages.has_prev else None
     return render_template('messages.html', title=_('Сообщения'), messages=messages.items,
