@@ -195,7 +195,6 @@ def send_message(recipient):
 @bp.route('/messages')
 @login_required
 def messages():
-    # TODO сделать "прочтение и индикацию новых сообщений"
     current_user.last_message_read_time = datetime.utcnow()
     current_user.add_notification('unread_message_count', 0)
     db.session.commit()
@@ -226,6 +225,20 @@ def notifications():
         'data': n.get_data(),
         'timestamp': n.timestamp
     } for n in notifications])
+
+
+@bp.route('/read_message')
+@login_required
+def read_message():
+    message_id = request.args.get('id', 0, type=int)
+    message = Message.query.filter_by(id=message_id).first_or_404()
+    if message.recipient_id != current_user.id:
+        return jsonify({'access': 'denied'})
+    message.is_new = False
+    db.session.commit()
+    return jsonify({
+        'message_id': message.id,
+        'message_is_new': message.is_new})
 
 
 @bp.route('/search')

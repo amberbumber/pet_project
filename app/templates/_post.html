@@ -1,5 +1,9 @@
  <table class="table table-hover" >
-        <tr bgcolor="{% if messages and post.timestamp > current_user.last_message_read_time %}#ADD8E6{% endif %}">
+        <tr id="{% if messages %}{{post.id}}{% endif %}"
+            class="{% if messages %}{% if post.is_new == True %}new {% endif %}message{% endif %}"
+            bgcolor="{% if messages and post.is_new == True %}#ADD8E6{% endif %}"
+            onclick="{% if messages and post.is_new == True %}
+                readMessage(id){% endif %}">
             <td width="70px">
                 <a href="{{ url_for('main.user', username=post.author.username) }}">
                 <img src="{{ post.author.avatar(36) }}"/>
@@ -7,7 +11,7 @@
             </td>
             <td>
                 {% set user_link %}
-                    <span class="user_popup">
+                    <span class="user_popup" >
                         <a href="{{ url_for('main.user', username=post.author.username) }}">
                             {{ post.author.username }}
                         </a>
