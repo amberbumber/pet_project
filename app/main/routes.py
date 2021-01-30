@@ -186,12 +186,6 @@ def send_message(recipient):
     return render_template('send_message.html', title=_('Отправить сообщение'), form=form, recipient=recipient)
 
 
-# def set_last_message_read_time():
-#     time.sleep(1)
-#     current_user.last_message_read_time = datetime.utcnow()
-#     db.session.commit()
-
-
 @bp.route('/messages')
 @login_required
 def messages():
@@ -253,3 +247,14 @@ def search():
     prev_url = url_for('main.search', q=g.search_form.q.data, page=page-1) \
         if page > 1 else None
     return render_template('search.html', title=_('Поиск'), posts=posts, next_url=next_url, prev_url=prev_url)
+
+
+@bp.route('/export_posts')
+@login_required
+def export_posts():
+    if current_user.get_task_in_progress('export_posts'):
+        flash(_('Экспорт сейчас в процессе. Дождитесь завершения текущего экспорта и попробуйте снова.'))
+    else:
+        current_user.launch_task('export_posts', _('Выгружаем посты...'))
+        db.session.commit()
+    return redirect(url_for('main.user', username=current_user.username))

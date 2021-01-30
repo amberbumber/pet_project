@@ -14,8 +14,8 @@ from flask_moment import Moment
 from flask_babel import Babel, lazy_gettext as _l
 from app.get_token import get_token, test_env
 from elasticsearch import Elasticsearch
-from threading import Thread
-import time
+from redis import Redis
+import rq
 
 
 # инициализация объектов
@@ -47,6 +47,9 @@ def create_app(config_class=Config):
     babel.init_app(app)
     app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']])  \
         if app.config['ELASTICSEARCH_URL'] else None
+    app.redis = Redis.from_url(app.config['REDIS_URL'])
+    app.task_queue = rq.Queue('microblog-tasks', connection=app.redis)
+
 
     # регистрация схемы данных в приложении
     from app.errors import bp as errors_bp
