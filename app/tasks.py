@@ -1,7 +1,7 @@
 from app import create_app
 from app import db
 from app.models import Task, User, Post
-from rq import  get_current_job
+from rq import get_current_job
 import sys
 import time
 from app.email import send_email
