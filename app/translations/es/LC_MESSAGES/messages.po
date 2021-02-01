@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-01-06 15:09+0700\n"
+"POT-Creation-Date: 2021-01-30 23:30+0700\n"
 "PO-Revision-Date: 2020-11-07 22:53+0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -22,16 +22,16 @@ msgstr ""
 msgid "Необходимо авторизоваться"
 msgstr ""
 
-#: app/translate.py:24
+#: app/email.py:29
+msgid "[Microblog] Сброс пароля"
+msgstr ""
+
+#: app/translate.py:20
 msgid "Ошибка: сервис перевода не сконфигурирован."
 msgstr ""
 
-#: app/translate.py:39
-msgid "Ошибка: Ошибка доступа к серверу перевода."
-msgstr ""
-
-#: app/auth/email.py:22
-msgid "[Microblog] Сброс пароля"
+#: app/translate.py:57 app/translate.py:61
+msgid "Сервер для перевода не доступен (язык не определен)"
 msgstr ""
 
 #: app/auth/forms.py:10 app/auth/forms.py:18 app/main/forms.py:11
@@ -134,7 +134,7 @@ msgstr ""
 msgid "Опубликовать"
 msgstr ""
 
-#: app/main/forms.py:39 app/main/routes.py:211
+#: app/main/forms.py:39 app/main/routes.py:249
 msgid "Поиск"
 msgstr ""
 
@@ -146,79 +146,118 @@ msgstr ""
 msgid "Отправить"
 msgstr ""
 
-#: app/main/routes.py:39
+#: app/main/routes.py:41
 msgid "Ваш пост успешно опубликован!"
 msgstr ""
 
-#: app/main/routes.py:45
+#: app/main/routes.py:47
 msgid "Домашняя страница"
 msgstr ""
 
-#: app/main/routes.py:68
+#: app/main/routes.py:70 app/templates/base.html:27
 msgid "Explore"
 msgstr ""
 
-#: app/main/routes.py:110
+#: app/main/routes.py:112
 msgid "Изменения успешно сохранены"
 msgstr ""
 
-#: app/main/routes.py:115 app/templates/edit_profile.html:5
+#: app/main/routes.py:117 app/templates/edit_profile.html:5
+#: app/templates/user.html:20
 msgid "Редактировать профиль"
 msgstr ""
 
-#: app/main/routes.py:125 app/main/routes.py:145
+#: app/main/routes.py:127 app/main/routes.py:147
 #, python-format
 msgid "Пользователь %(username)s не найден"
 msgstr ""
 
-#: app/main/routes.py:128
+#: app/main/routes.py:130
 msgid "Вы не можете подписаться на самого себя"
 msgstr ""
 
-#: app/main/routes.py:132
+#: app/main/routes.py:134
 #, python-format
 msgid "Вы подписались на пользователя %(username)s!"
 msgstr ""
 
-#: app/main/routes.py:148
+#: app/main/routes.py:150
 msgid "Вы не можете отписаться от самого себя"
 msgstr ""
 
-#: app/main/routes.py:152
+#: app/main/routes.py:154
 #, python-format
 msgid "Вы успешно отписались от пользователя %(username)s"
 msgstr ""
 
-#: app/main/routes.py:181
+#: app/main/routes.py:184
 msgid "Ваше сообщение было отправлено пользователю {}"
 msgstr ""
 
-#: app/main/routes.py:183
+#: app/main/routes.py:186
 msgid "Отправить сообщение"
 msgstr ""
 
-#: app/main/routes.py:195
+#: app/main/routes.py:201
 msgid "Сообщения"
 msgstr ""
 
-#: app/templates/_post.html:16
+#: app/main/routes.py:256
+msgid ""
+"Экспорт сейчас в процессе. Дождитесь завершения текущего экспорта и "
+"попробуйте снова."
+msgstr ""
+
+#: app/main/routes.py:258
+msgid "Выгружаем посты..."
+msgstr ""
+
+#: app/templates/_post.html:20
 #, python-format
 msgid "%(username)s сказал %(when)s"
 msgstr ""
 
-#: app/templates/_post.html:26
+#: app/templates/_post.html:30
 msgid "Перевести"
+msgstr ""
+
+#: app/templates/base.html:5
+msgid "Добро пожаловать в"
+msgstr ""
+
+#: app/templates/base.html:26
+msgid "Home"
+msgstr ""
+
+#: app/templates/base.html:40
+msgid "Login"
+msgstr ""
+
+#: app/templates/base.html:43
+msgid "Messages"
+msgstr ""
+
+#: app/templates/base.html:50
+msgid "Profile"
+msgstr ""
+
+#: app/templates/base.html:51
+msgid "Logout"
+msgstr ""
+
+#: app/templates/base.html:107
+msgid "Ошибка: Невозможно подключитсья к серверу."
 msgstr ""
 
 #: app/templates/index.html:5
 msgid "Привет"
 msgstr ""
 
-#: app/templates/index.html:38
+#: app/templates/index.html:38 app/templates/user.html:66
 msgid "Посты новее"
 msgstr ""
 
-#: app/templates/index.html:42
+#: app/templates/index.html:42 app/templates/user.html:71
 msgid "Посты старее"
 msgstr ""
 
@@ -226,11 +265,11 @@ msgstr ""
 msgid "Личные сообщения"
 msgstr ""
 
-#: app/templates/messages.html:18
+#: app/templates/messages.html:19
 msgid "Сообщения новее"
 msgstr ""
 
-#: app/templates/messages.html:22
+#: app/templates/messages.html:23
 msgid "Сообщения старее"
 msgstr ""
 
@@ -251,6 +290,41 @@ msgstr ""
 msgid "Отпраивть сообщение пользователю %(recipient)s"
 msgstr ""
 
+#: app/templates/user.html:9
+msgid "Пользователь:"
+msgstr ""
+
+#: app/templates/user.html:11
+#, python-format
+msgid "Заходил последний раз: %(when)s"
+msgstr ""
+
+#: app/templates/user.html:14
+#, python-format
+msgid "Пописчики(кто читает): %(count)d"
+msgstr ""
+
+#: app/templates/user.html:15
+#, python-format
+msgid "подписаны(кого читает): %(count)d"
+msgstr ""
+
+#: app/templates/user.html:27
+msgid "Экспорт постов"
+msgstr ""
+
+#: app/templates/user.html:36 app/templates/user_popup.html:24
+msgid "Подписаться"
+msgstr ""
+
+#: app/templates/user.html:44 app/templates/user_popup.html:32
+msgid "Отписаться"
+msgstr ""
+
+#: app/templates/user.html:51
+msgid "Отправить личное сообщение"
+msgstr ""
+
 #: app/templates/user_popup.html:13
 msgid "Заходил(а) последний раз"
 msgstr ""
@@ -263,14 +337,6 @@ msgstr ""
 #: app/templates/user_popup.html:17
 #, python-format
 msgid "Полписан на: %(count)d"
-msgstr ""
-
-#: app/templates/user_popup.html:24
-msgid "Подписаться"
-msgstr ""
-
-#: app/templates/user_popup.html:32
-msgid "Отписаться"
 msgstr ""
 
 #: app/templates/auth/login.html:14
@@ -344,5 +410,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "подписаны(кого читает): %(count)d"
+#~ msgstr ""
+
+#~ msgid "Ошибка: Ошибка доступа к серверу перевода."
 #~ msgstr ""
 
