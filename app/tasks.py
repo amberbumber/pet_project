@@ -19,7 +19,7 @@ def _set_task_progress(progress):
         job.meta['progress'] = progress
         job.save_meta()
         task = Task.query.get(job.get_id())
-        Task.user.add_notification('task_progress', {'task_id': job.get_id(),
+        task.user.add_notification('task_progress', {'task_id': job.get_id(),
                                                      'progress': progress})
         if progress >= 100:
             task.complete = True
@@ -48,7 +48,7 @@ def export_posts(user_id):
                    text_body=render_template('email/export_posts.txt', user=user),
                    html_body=render_template('email/export_posts.html', user=user),
                    attachments=[('posts.json', 'application/json',
-                                 json.dumps({'posts': data}, indent=4))],
+                                 json.dumps({'posts': data}, indent=4, ensure_ascii=False))],
                    sync=True)
     except:
         _set_task_progress(100)
