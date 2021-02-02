@@ -38,6 +38,6 @@ class Config(object):
     LOG_TO_STDOUT = os.environ.get('LOG_TO_STDOUT')
 
     # URL-адрес подключения к службе Redis
-    REDIS_URL = os.environ.get('REDIS_URL') or 'redis://'
+    REDIS_URL = os.environ.get('REDIS_URL')   # or 'redis://'
 
 
