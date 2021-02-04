@@ -16,6 +16,7 @@ from app.get_token import get_token, test_env
 from elasticsearch import Elasticsearch
 from redis import Redis
 import rq
+from urllib.parse import urlparse
 
 
 # инициализация объектов
@@ -47,7 +48,10 @@ def create_app(config_class=Config):
     babel.init_app(app)
     app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']])  \
         if app.config['ELASTICSEARCH_URL'] else None
-    app.redis = Redis.from_url(app.config['REDIS_URL'])
+    url = urlparse(os.environ.get("REDIS_URL"))
+    app.redis = Redis(host=url.hostname, port=url.port, username=url.username, password=url.password, ssl=True,
+                    ssl_cert_reqs=None)
+    # app.redis = Redis.from_url(app.config['REDIS_URL'])
     app.task_queue = rq.Queue('microblog-tasks', connection=app.redis)
 
 
